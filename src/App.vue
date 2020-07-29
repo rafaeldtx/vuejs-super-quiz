@@ -1,12 +1,20 @@
 <template>
 	<div id="app">
 		<h1>Super Quiz</h1>
+
+        <transition-group tag="div">
+            <question :key="'question'" />
+            <result :key="'result'" />
+        </transition-group>
 	</div>
 </template>
 
 <script>
-export default {
+import Question from "@/components/Question"
+import Result from "@/components/Result"
 
+export default {
+    components: { Question, Result }
 }
 </script>
 
