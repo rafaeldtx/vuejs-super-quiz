@@ -5,8 +5,13 @@
             <question
                 v-if="questionMode"
                 :question="questions[currentQuestion]"
+                @answered="showResult"
             />
-            <result :result="result" v-else />
+            <result
+                v-else
+                :result="result"
+                @confirmed="nextQuestion"
+            />
 	</div>
 </template>
 
@@ -23,6 +28,18 @@ export default {
             questionMode: true,
             questions,
             currentQuestion: 0
+        }
+    },
+    methods: {
+        showResult(result) {
+            this.result = result
+            this.questionMode = false
+        },
+        nextQuestion() {
+            const r = Math.random() *  this.questions.length
+            this.currentQuestion = parseInt(r)
+            this.questionMode = true
+
         }
     }
 }
