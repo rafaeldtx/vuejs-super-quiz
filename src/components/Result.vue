@@ -1,12 +1,18 @@
 <template>
-    <div class="result">
-        
+    <div class="result" :class="{wrong: !result}">
+        <span v-if="result">Right Answer!! \o/</span>
+        <span v-else>Wrong Answer!! :X</span>
     </div>
 </template>
 
 <script>
 export default {
-    
+    props: {
+        result: {
+            type: Boolean,
+            required: true
+        }
+    }
 }
 </script>
 
@@ -44,7 +50,7 @@ export default {
         background-color: #FFF;
         color: #30863d;
         font-weight: 600;
-    } 
+    }
 
     .result.wrong button {
         color: #bb2814;
