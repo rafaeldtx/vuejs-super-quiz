@@ -2,19 +2,29 @@
 	<div id="app">
 		<h1>Super Quiz</h1>
 
-        <transition-group tag="div">
-            <question :key="'question'" />
-            <result :key="'result'" />
-        </transition-group>
+            <question
+                v-if="questionMode"
+                :question="questions[currentQuestion]"
+            />
+            <result :result="result" v-else />
 	</div>
 </template>
 
 <script>
+import questions from "@/util/questions"
 import Question from "@/components/Question"
 import Result from "@/components/Result"
 
 export default {
-    components: { Question, Result }
+    components: { Question, Result },
+    data() {
+        return {
+            result: false,
+            questionMode: true,
+            questions,
+            currentQuestion: 0
+        }
+    }
 }
 </script>
 
