@@ -1,13 +1,12 @@
 <template>
     <div class="result" :class="{wrong: !result}">
-        <span v-if="result">Right Answer!! \o/</span>
-        <span v-else>Wrong Answer!! :X</span>
-
-        <hr>
+        <div class="message">
+            <span v-if="result">Right Answer!! \o/</span>
+            <span v-else>Wrong Answer!! :X</span>
+        </div>
 
         <button @click="$emit('confirmed')">Next question</button>
     </div>
-
 </template>
 
 <script>
@@ -59,5 +58,8 @@ export default {
 
     .result.wrong button {
         color: #bb2814;
+    }
+    .result .message {
+        margin-bottom: 4rem;
     }
 </style>
