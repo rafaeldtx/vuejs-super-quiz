@@ -4,7 +4,7 @@
 
         <ul class="answers">
             <li
-                v-for="(answer, i) in question.answers"
+                v-for="(answer, i) in shuffleAnswers"
                 :key="i"
                 @click="$emit('answered', answer.correct)"
             >
@@ -21,6 +21,12 @@ export default {
         question: {
             type: Object,
             required: true
+        }
+    },
+    computed: {
+        shuffleAnswers() {
+            let answers = this.question.answers
+            return answers.sort(() => 0.5 - Math.random())
         }
     }
 }
